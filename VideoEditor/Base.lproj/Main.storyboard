@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="vu6-xj-Fn6">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Mege Video-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="VideoController" customModule="VideoEditor" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Mege Video" id="3oK-NQ-MP5">
+                        <barButtonItem key="leftBarButtonItem" title="Export" id="QR2-X0-b1r">
+                            <connections>
+                                <action selector="exportMergedVideo:" destination="BYZ-38-t0r" id="Yxw-Ss-rbI"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Merge" id="525-Wi-aSb">
+                            <connections>
+                                <action selector="doMergeVideo:" destination="BYZ-38-t0r" id="bYm-o7-Htx"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1076" y="133.5832083958021"/>
+        </scene>
+        <!--Image Filter View Controller-->
+        <scene sceneID="lgN-Su-upT">
+            <objects>
+                <viewController id="6c2-Om-tGj" customClass="ImageFilterViewController" customModule="VideoEditor" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="7x6-oc-g1e">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="screen" translatesAutoresizingMaskIntoConstraints="NO" id="aKp-o3-gJC">
+                                <rect key="frame" x="16" y="81" width="343" height="208"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="jc3-hV-Njg">
+                                <rect key="frame" x="14" y="384" width="347" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="sliderChange:" destination="6c2-Om-tGj" eventType="valueChanged" id="7xI-eJ-1LN"/>
+                                </connections>
+                            </slider>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="Rar-Yf-QfV"/>
+                    </view>
+                    <connections>
+                        <outlet property="myImage" destination="aKp-o3-gJC" id="Z6Y-j3-9vF"/>
+                        <outlet property="slider" destination="jc3-hV-Njg" id="JMN-GD-Vsj"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZVP-Ia-fGa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2020" y="62.518740629685162"/>
+        </scene>
+        <!--Frame Extrator View Controller-->
+        <scene sceneID="gd8-tZ-ygs">
+            <objects>
+                <viewController id="1Rh-Hv-i5B" customClass="FrameExtratorViewController" customModule="VideoEditor" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="75N-eN-yGI">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sdw-bv-4nV">
+                                <rect key="frame" x="0.0" y="282" width="375" height="197"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="kOA-Es-xbo"/>
+                    </view>
+                    <connections>
+                        <outlet property="frameImageView" destination="sdw-bv-4nV" id="Zq8-DJ-SR8"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NjP-BA-dUo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2903.1999999999998" y="-0.44977511244377816"/>
+        </scene>
+        <!--Trime Video Preview View Controller-->
+        <scene sceneID="fmM-Z9-JEi">
+            <objects>
+                <viewController id="qLj-M1-7V8" customClass="TrimeVideoPreviewViewController" customModule="VideoEditor" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="dED-Br-Hgm">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="PZE-s4-9TY"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Y6j-ba-QYK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3764" y="7"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="akD-wF-jkj">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="u3q-Sr-LVc" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Cgk-A2-TFN">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="4uG-Gh-mqT"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Kxh-80-7LK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="172" y="792.95352323838085"/>
+        </scene>
+        <!--Video Cropper View Controller-->
+        <scene sceneID="VoD-1o-mCX">
+            <objects>
+                <viewController storyboardIdentifier="videoCropViewController" id="gjK-fY-asp" customClass="VideoCropperViewController" customModule="PryntTrimmerView_Example" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="A2K-m2-35k"/>
+                        <viewControllerLayoutGuide type="bottom" id="YFE-Ba-kPS"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="EIG-eO-SfJ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zgS-aD-QpS" customClass="VideoCropView" customModule="PryntTrimmerView">
+                                <rect key="frame" x="0.0" y="72" width="375" height="375"/>
+                                <color key="backgroundColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="zgS-aD-QpS" secondAttribute="height" multiplier="1:1" id="BxH-mk-8mm"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="93Y-sN-mEh">
+                                <rect key="frame" x="0.0" y="447" width="375" height="220"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d7C-Tk-5Zp" customClass="ThumbSelectorView" customModule="PryntTrimmerView">
+                                        <rect key="frame" x="32" y="79" width="311" height="62"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="d7C-Tk-5Zp" secondAttribute="height" multiplier="5:1" id="Tl2-jl-PwW"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DZs-FQ-4Pg">
+                                        <rect key="frame" x="0.0" y="176" width="375" height="44"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jC8-7r-9O0">
+                                                <rect key="frame" x="76" y="7" width="34" height="30"/>
+                                                <state key="normal" title="Load">
+                                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="selectAsset:" destination="gjK-fY-asp" eventType="touchUpInside" id="EzS-4G-tq9"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FuE-3j-IM8">
+                                                <rect key="frame" x="170" y="7" width="34" height="30"/>
+                                                <state key="normal" title="Crop">
+                                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="crop:" destination="gjK-fY-asp" eventType="touchUpInside" id="xbW-ck-b4Z"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QMP-uC-dwM">
+                                                <rect key="frame" x="264" y="7" width="45" height="30"/>
+                                                <state key="normal" title="Rotate">
+                                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="rotate:" destination="gjK-fY-asp" eventType="touchUpInside" id="dFe-47-xKq"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstItem="FuE-3j-IM8" firstAttribute="centerX" secondItem="DZs-FQ-4Pg" secondAttribute="centerX" id="Bte-wV-7r7"/>
+                                            <constraint firstItem="FuE-3j-IM8" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="jC8-7r-9O0" secondAttribute="trailing" constant="8" symbolic="YES" id="Iv6-35-7Mn"/>
+                                            <constraint firstAttribute="height" constant="44" id="L64-0w-oJN"/>
+                                            <constraint firstItem="jC8-7r-9O0" firstAttribute="centerY" secondItem="DZs-FQ-4Pg" secondAttribute="centerY" id="Q4d-zK-eKh"/>
+                                            <constraint firstItem="FuE-3j-IM8" firstAttribute="centerY" secondItem="DZs-FQ-4Pg" secondAttribute="centerY" id="SgW-lm-arL"/>
+                                            <constraint firstItem="QMP-uC-dwM" firstAttribute="centerY" secondItem="DZs-FQ-4Pg" secondAttribute="centerY" id="UQu-RT-tsV"/>
+                                            <constraint firstAttribute="trailing" secondItem="QMP-uC-dwM" secondAttribute="trailing" constant="66" id="ZUT-P4-jqe"/>
+                                            <constraint firstItem="QMP-uC-dwM" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="FuE-3j-IM8" secondAttribute="trailing" constant="8" symbolic="YES" id="bJY-xb-Mqp"/>
+                                            <constraint firstItem="jC8-7r-9O0" firstAttribute="leading" secondItem="DZs-FQ-4Pg" secondAttribute="leading" constant="76" id="u7g-Hg-KTd"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="d7C-Tk-5Zp" firstAttribute="centerX" secondItem="93Y-sN-mEh" secondAttribute="centerX" id="Inr-RK-GSQ"/>
+                                    <constraint firstItem="DZs-FQ-4Pg" firstAttribute="leading" secondItem="93Y-sN-mEh" secondAttribute="leading" id="KMe-EN-u58"/>
+                                    <constraint firstAttribute="trailing" secondItem="DZs-FQ-4Pg" secondAttribute="trailing" id="Mkf-ML-RVM"/>
+                                    <constraint firstAttribute="bottom" secondItem="DZs-FQ-4Pg" secondAttribute="bottom" id="WxF-Yq-ldW"/>
+                                    <constraint firstItem="d7C-Tk-5Zp" firstAttribute="leading" secondItem="93Y-sN-mEh" secondAttribute="leading" constant="32" id="ddL-Tf-qsg"/>
+                                    <constraint firstItem="d7C-Tk-5Zp" firstAttribute="centerY" secondItem="93Y-sN-mEh" secondAttribute="centerY" id="eLa-8y-nde"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="zgS-aD-QpS" firstAttribute="width" secondItem="EIG-eO-SfJ" secondAttribute="width" id="22a-OV-0zu"/>
+                            <constraint firstItem="zgS-aD-QpS" firstAttribute="centerX" secondItem="EIG-eO-SfJ" secondAttribute="centerX" id="DaI-Rr-QDT"/>
+                            <constraint firstItem="93Y-sN-mEh" firstAttribute="leading" secondItem="EIG-eO-SfJ" secondAttribute="leading" id="Jbt-Sb-CpW"/>
+                            <constraint firstItem="YFE-Ba-kPS" firstAttribute="top" secondItem="93Y-sN-mEh" secondAttribute="bottom" id="SSv-sJ-3Qc"/>
+                            <constraint firstItem="zgS-aD-QpS" firstAttribute="top" secondItem="EIG-eO-SfJ" secondAttribute="topMargin" constant="52" id="c9n-xm-Lkz"/>
+                            <constraint firstItem="93Y-sN-mEh" firstAttribute="top" secondItem="zgS-aD-QpS" secondAttribute="bottom" id="cM7-zM-CFh"/>
+                            <constraint firstAttribute="trailing" secondItem="93Y-sN-mEh" secondAttribute="trailing" id="u9S-It-8lQ"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="2NH-ue-DTN"/>
+                    </view>
+                    <connections>
+                        <outlet property="selectThumbView" destination="d7C-Tk-5Zp" id="LCX-Wi-Cir"/>
+                        <outlet property="videoCropView" destination="zgS-aD-QpS" id="0Vt-Qj-jmz"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tga-yl-bqR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-815" y="824"/>
+        </scene>
+        <!--Video Trimmer View Controller-->
+        <scene sceneID="kkT-Rq-pSp">
+            <objects>
+                <viewController storyboardIdentifier="trimmerViewController" id="vu6-xj-Fn6" customClass="VideoTrimmerViewController" customModule="PryntTrimmerView_Example" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Tte-ph-cSV"/>
+                        <viewControllerLayoutGuide type="bottom" id="Eua-r4-vgM"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="aHk-9X-DMd">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xLN-Zb-Nvq" userLabel="Player View">
+                                <rect key="frame" x="16" y="20" width="343" height="467"/>
+                                <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v2B-DJ-g6x" customClass="TrimmerView" customModule="PryntTrimmerView">
+                                <rect key="frame" x="40" y="543" width="295" height="56"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="56" id="3Te-oc-sfJ"/>
+                                </constraints>
+                            </view>
+                            <view alpha="0.80000001192092896" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JK9-oM-B9z" userLabel="Bottom View">
+                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n9V-ux-1mq">
+                                        <rect key="frame" x="56" y="7" width="30" height="30"/>
+                                        <state key="normal" title="Play">
+                                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="play:" destination="vu6-xj-Fn6" eventType="touchUpInside" id="2JU-nz-fnh"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MpI-2X-6ic" userLabel="Select Asset Button">
+                                        <rect key="frame" x="262" y="7" width="57" height="30"/>
+                                        <state key="normal" title="Random">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="selectAsset:" destination="vu6-xj-Fn6" eventType="touchUpInside" id="wEC-Gj-QnX"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="n9V-ux-1mq" firstAttribute="centerY" secondItem="JK9-oM-B9z" secondAttribute="centerY" id="6ag-yd-kZ6"/>
+                                    <constraint firstItem="MpI-2X-6ic" firstAttribute="centerY" secondItem="JK9-oM-B9z" secondAttribute="centerY" id="6b2-Jf-sgD"/>
+                                    <constraint firstItem="n9V-ux-1mq" firstAttribute="leading" secondItem="JK9-oM-B9z" secondAttribute="leading" constant="56" id="IFD-2B-Qv1"/>
+                                    <constraint firstAttribute="trailing" secondItem="MpI-2X-6ic" secondAttribute="trailing" constant="56" id="RV0-fx-wVH"/>
+                                    <constraint firstAttribute="height" constant="44" id="UY5-Ni-K1g"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="n9V-ux-1mq" secondAttribute="trailing" constant="20" symbolic="YES" id="gE0-jq-Fab"/>
+                                    <constraint firstItem="MpI-2X-6ic" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="JK9-oM-B9z" secondAttribute="leading" constant="20" symbolic="YES" id="i2V-wM-hL7"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="v2B-DJ-g6x" firstAttribute="leading" secondItem="aHk-9X-DMd" secondAttribute="leadingMargin" constant="24" id="ABk-02-zV8"/>
+                            <constraint firstItem="JK9-oM-B9z" firstAttribute="centerX" secondItem="aHk-9X-DMd" secondAttribute="centerX" id="GVp-TO-r1s"/>
+                            <constraint firstItem="Eua-r4-vgM" firstAttribute="top" secondItem="JK9-oM-B9z" secondAttribute="bottom" id="HfT-Ul-6h6"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="xLN-Zb-Nvq" secondAttribute="trailing" id="Nyp-HV-q0A"/>
+                            <constraint firstItem="xLN-Zb-Nvq" firstAttribute="top" secondItem="Tte-ph-cSV" secondAttribute="bottom" id="PIY-Fr-wYf"/>
+                            <constraint firstItem="JK9-oM-B9z" firstAttribute="top" secondItem="v2B-DJ-g6x" secondAttribute="bottom" constant="24" id="fnK-b5-IV9"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="v2B-DJ-g6x" secondAttribute="trailing" constant="24" id="h1x-0p-tci"/>
+                            <constraint firstItem="v2B-DJ-g6x" firstAttribute="top" secondItem="xLN-Zb-Nvq" secondAttribute="bottom" constant="56" id="hXx-z4-D2p"/>
+                            <constraint firstItem="JK9-oM-B9z" firstAttribute="width" secondItem="aHk-9X-DMd" secondAttribute="width" id="sXX-5N-Pcr"/>
+                            <constraint firstItem="xLN-Zb-Nvq" firstAttribute="leading" secondItem="aHk-9X-DMd" secondAttribute="leadingMargin" id="saD-7x-YEv"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="yDP-EL-0RP"/>
+                    </view>
+                    <connections>
+                        <outlet property="playButton" destination="n9V-ux-1mq" id="Dcg-Zh-jvn"/>
+                        <outlet property="playerView" destination="xLN-Zb-Nvq" id="b4R-t3-rrj"/>
+                        <outlet property="selectAssetButton" destination="MpI-2X-6ic" id="3Pc-IF-kRY"/>
+                        <outlet property="trimmerView" destination="v2B-DJ-g6x" id="9BG-GE-mjw"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2Th-iK-kir" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="32.799999999999997" y="92.203898050974516"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="screen" width="610" height="1052"/>
+    </resources>
+</document>

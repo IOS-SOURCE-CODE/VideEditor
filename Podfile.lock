@@ -1,0 +1,16 @@
+PODS:
+  - PryntTrimmerView (2.0.1)
+
+DEPENDENCIES:
+  - PryntTrimmerView
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - PryntTrimmerView
+
+SPEC CHECKSUMS:
+  PryntTrimmerView: 4260ae497a2f3e1bbfc0b71247eb74ab92bf0490
+
+PODFILE CHECKSUM: 04bd77545e1c9ff55c37473bd3d9351737858e55
+
+COCOAPODS: 1.5.3
