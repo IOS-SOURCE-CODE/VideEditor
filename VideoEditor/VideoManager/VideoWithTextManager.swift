@@ -212,7 +212,7 @@ extension VideoManager {
         mainComposition.animationTool = AVVideoCompositionCoreAnimationTool(postProcessingAsVideoLayer: videoLayer, in: parentlayer)
         
         // Export to file
-        let path = NSTemporaryDirectory().appending("mergedVideo.mp4")
+        let path = NSTemporaryDirectory().appending("mergedVideoImageText.mp4")
         let exportURL = URL.init(fileURLWithPath: path)
         
         // Remove file if existed

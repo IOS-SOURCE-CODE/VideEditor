@@ -19,7 +19,7 @@ class VideoData: NSObject {
 }
 
 class TextData: NSObject {
-    var text = ""
+    var text: String!
     var fontSize:CGFloat = 40
     var textColor = UIColor.red
     var showTime:CGFloat = 0
