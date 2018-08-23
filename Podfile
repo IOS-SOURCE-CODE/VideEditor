@@ -8,5 +8,8 @@ target 'VideoEditor' do
   # Pods for VideoEditor
 
   pod "PryntTrimmerView"
+  pod "SoundWave"
+  
+  pod 'FDWaveformView'
 
 end

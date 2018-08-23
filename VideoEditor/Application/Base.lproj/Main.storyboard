@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="vu6-xj-Fn6">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="u3q-Sr-LVc">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -131,7 +131,7 @@
         <!--Video Cropper View Controller-->
         <scene sceneID="VoD-1o-mCX">
             <objects>
-                <viewController storyboardIdentifier="videoCropViewController" id="gjK-fY-asp" customClass="VideoCropperViewController" customModule="PryntTrimmerView_Example" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="videoCropViewController" id="gjK-fY-asp" customClass="VideoCropperViewController" customModule="VideoEditor" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="A2K-m2-35k"/>
                         <viewControllerLayoutGuide type="bottom" id="YFE-Ba-kPS"/>
@@ -232,10 +232,40 @@
             </objects>
             <point key="canvasLocation" x="-815" y="824"/>
         </scene>
+        <!--Waveform View Controller-->
+        <scene sceneID="wyW-Vj-6Vp">
+            <objects>
+                <viewController id="mVt-8O-coq" customClass="FDWaveformViewController" customModule="VideoEditor" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="h3u-LY-Iyh">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="Vjh-cm-cVX"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uD1-jR-QLP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1961" y="-90"/>
+        </scene>
+        <!--Audio Kit View Controller-->
+        <scene sceneID="RvS-ws-GjD">
+            <objects>
+                <viewController id="eso-6J-q1c" customClass="AudioKitViewController" customModule="VideoEditor" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="YXB-ij-1Ff">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="vC0-7C-1IW"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KTw-DA-CTa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1042" y="42"/>
+        </scene>
         <!--Video Trimmer View Controller-->
         <scene sceneID="kkT-Rq-pSp">
             <objects>
-                <viewController storyboardIdentifier="trimmerViewController" id="vu6-xj-Fn6" customClass="VideoTrimmerViewController" customModule="PryntTrimmerView_Example" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="trimmerViewController" id="vu6-xj-Fn6" customClass="VideoTrimmerViewController" customModule="VideoEditor" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Tte-ph-cSV"/>
                         <viewControllerLayoutGuide type="bottom" id="Eua-r4-vgM"/>

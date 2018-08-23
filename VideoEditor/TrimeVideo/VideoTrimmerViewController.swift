@@ -12,6 +12,7 @@ import MobileCoreServices
 import PryntTrimmerView
 
 /// A view controller to demonstrate the trimming of a video. Make sure the scene is selected as the initial
+
 // view controller in the storyboard
 class VideoTrimmerViewController: AssetSelectionViewController {
 
@@ -26,6 +27,7 @@ class VideoTrimmerViewController: AssetSelectionViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         trimmerView.handleColor = UIColor.white
         trimmerView.mainColor = UIColor.darkGray
     }

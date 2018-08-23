@@ -9,18 +9,17 @@
 import UIKit
 import AVKit
 
+typealias Completion = (URL?, Error?) -> Void
 
 protocol VideoManagable {
-    
+    func doMerge(arrayVideos:[AVAsset], animation: Bool, completion: @escaping Completion)
 }
 
-class VideoManager {
+class VideoManager  {
     
     let defaultSize = CGSize(width: 1920, height: 1080)
     
-    typealias Completion = (URL?, Error?) -> Void
-    
-    
+   
      func doMerge(arrayVideos:[AVAsset], animation: Bool = false, completion: @escaping Completion) {
         
         var insertTime = kCMTimeZero
@@ -53,7 +52,7 @@ class VideoManager {
         
         
         // Step2 - Get Audio track
-        let silenceUrl = Bundle.main.url(forResource: "silence", withExtension: "mp3")
+        let silenceUrl = Bundle.main.url(forResource: "creativeminds", withExtension: "mp3")
         let silenceAVAsset = AVAsset(url: silenceUrl!)
         let silenceSoundTrack = silenceAVAsset.tracks(withMediaType: AVMediaType.audio).first
         
@@ -67,6 +66,8 @@ class VideoManager {
             var audioTrack: AVAssetTrack?
             if videoAsset.tracks(withMediaType: AVMediaType.audio).count > 0 {
                 audioTrack = videoAsset.tracks(withMediaType: AVMediaType.audio).first
+                
+                
             } else {
                 audioTrack = silenceSoundTrack
             }
@@ -104,143 +105,26 @@ class VideoManager {
             
         }
         
-        // Main video composition instruction
-        let mainInstruction = AVMutableVideoCompositionInstruction()
-        mainInstruction.timeRange = CMTimeRangeMake(kCMTimeZero, insertTime)
-        mainInstruction.layerInstructions = arrayLayerInstruction
-        
-        // Main video composition
-        let mainComposition = AVMutableVideoComposition()
-        mainComposition.instructions = [mainInstruction]
-        mainComposition.frameDuration = CMTimeMake(1, 30)
-        mainComposition.renderSize = outSize
         
         // Export to file
         let path = NSTemporaryDirectory().appending("mergedVideo.mp4")
         let exportURL = URL.init(fileURLWithPath: path)
         
-        
-        // Remove file if existed
-        FileManager.default.removeItemIfExisted(exportURL)
-        
-        
-        // Save file to temp
-        exportMergeVideo(mixComposition: mixComposition, exportURL: exportURL, mainComposition: mainComposition, completion: completion)
-        
+        exportMergeVideo(insertTime:insertTime, mixComposition: mixComposition, exportURL: exportURL, outSize: outSize, arrayLayerInstruction: arrayLayerInstruction, completion: completion)
     }
     
-    
-    fileprivate func exportMergeVideo(mixComposition: AVMutableComposition, exportURL: URL, mainComposition: AVMutableVideoComposition, completion: @escaping Completion) {
-        
-        // Init exporter
-        let exporter = AVAssetExportSession.init(asset: mixComposition, presetName: AVAssetExportPresetHighestQuality)
-        exporter?.outputURL = exportURL
-        exporter?.outputFileType = AVFileType.mp4
-        exporter?.shouldOptimizeForNetworkUse = true
-        exporter?.videoComposition = mainComposition
-        
-        // Do export
-        exporter?.exportAsynchronously(completionHandler: {
-            DispatchQueue.main.async {
-                self.exportDidFinish(exporter: exporter, videoURL: exportURL, completion: completion)
-            }
-        })
-    }
-    
-    fileprivate func exportDidFinish(exporter:AVAssetExportSession?, videoURL:URL, completion:@escaping Completion) -> Void {
-        if exporter?.status == AVAssetExportSessionStatus.completed {
-            print("Exported file: \(videoURL.absoluteString)")
-            completion(videoURL,nil)
-        }
-        else if exporter?.status == AVAssetExportSessionStatus.failed {
-            completion(videoURL,exporter?.error)
-        }
-    }
 }
 
 
 
-extension VideoManager {
+extension VideoManager: VideoCompositionInstruction, VideoManagerOutputable {
     
-    fileprivate func videoCompositionInstructionForTrack(track: AVCompositionTrack, asset: AVAsset, standardSize:CGSize, atTime: CMTime) -> AVMutableVideoCompositionLayerInstruction {
-        
-        let instruction = AVMutableVideoCompositionLayerInstruction(assetTrack: track)
-        let assetTrack = asset.tracks(withMediaType: AVMediaType.video)[0]
-        
-        let transform = assetTrack.preferredTransform
-        let assetInfo = orientationFromTransform(transform: transform)
-        
-        var aspectFillRatio:CGFloat = 1
-        if assetTrack.naturalSize.height < assetTrack.naturalSize.width {
-            aspectFillRatio = standardSize.height / assetTrack.naturalSize.height
-        }
-        else {
-            aspectFillRatio = standardSize.width / assetTrack.naturalSize.width
-        }
-        
-        if assetInfo.isPortrait {
-            let scaleFactor = CGAffineTransform(scaleX: aspectFillRatio, y: aspectFillRatio)
-            
-            let posX = standardSize.width/2 - (assetTrack.naturalSize.height * aspectFillRatio)/2
-            let posY = standardSize.height/2 - (assetTrack.naturalSize.width * aspectFillRatio)/2
-            let moveFactor = CGAffineTransform(translationX: posX, y: posY)
-            
-            instruction.setTransform(assetTrack.preferredTransform.concatenating(scaleFactor).concatenating(moveFactor), at: atTime)
-            
-        } else {
-            let scaleFactor = CGAffineTransform(scaleX: aspectFillRatio, y: aspectFillRatio)
-            
-            let posX = standardSize.width/2 - (assetTrack.naturalSize.width * aspectFillRatio)/2
-            let posY = standardSize.height/2 - (assetTrack.naturalSize.height * aspectFillRatio)/2
-            let moveFactor = CGAffineTransform(translationX: posX, y: posY)
-            
-            var concat = assetTrack.preferredTransform.concatenating(scaleFactor).concatenating(moveFactor)
-            
-            if assetInfo.orientation == .down {
-                let fixUpsideDown = CGAffineTransform(rotationAngle: CGFloat(Double.pi))
-                concat = fixUpsideDown.concatenating(scaleFactor).concatenating(moveFactor)
-            }
-            
-            instruction.setTransform(concat, at: atTime)
-        }
-        return instruction
-    }
-    
-    fileprivate func orientationFromTransform(transform: CGAffineTransform) -> (orientation: UIImageOrientation, isPortrait: Bool) {
-        
-        var assetOrientation = UIImageOrientation.up
-        var isPortrait = false
-        if transform.a == 0 && transform.b == 1.0 && transform.c == -1.0 && transform.d == 0 {
-            assetOrientation = .right
-            isPortrait = true
-        } else if transform.a == 0 && transform.b == -1.0 && transform.c == 1.0 && transform.d == 0 {
-            assetOrientation = .left
-            isPortrait = true
-        } else if transform.a == 1.0 && transform.b == 0 && transform.c == 0 && transform.d == 1.0 {
-            assetOrientation = .up
-        } else if transform.a == -1.0 && transform.b == 0 && transform.c == 0 && transform.d == -1.0 {
-            assetOrientation = .down
-        }
-        return (assetOrientation, isPortrait)
-    }
 }
 
 
 
 
 
-extension FileManager {
-    func removeItemIfExisted(_ url:URL) -> Void {
-        if FileManager.default.fileExists(atPath: url.path) {
-            do {
-                try FileManager.default.removeItem(atPath: url.path)
-            }
-            catch {
-                print("Failed to delete file")
-            }
-        }
-    }
-}
 
 
 
