@@ -18,7 +18,7 @@ protocol VideoManagable {
 class VideoManager  {
     
     let defaultSize = CGSize(width: 1920, height: 1080)
-    
+    var imageDuration = 5.0 
    
      func doMerge(arrayVideos:[AVAsset], animation: Bool = false, completion: @escaping Completion) {
         

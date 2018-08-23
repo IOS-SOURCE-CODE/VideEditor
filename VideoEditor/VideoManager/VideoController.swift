@@ -24,6 +24,7 @@ class VideoController: UIViewController {
     
     
     fileprivate func mergeTwoVideosToOneVideo() {
+        
         let urlVideo1 = Bundle.main.url(forResource: "movie1", withExtension: "mov")
         let urlVideo2 = Bundle.main.url(forResource: "movie2", withExtension: "mov")
         
@@ -39,10 +40,8 @@ class VideoController: UIViewController {
         }
     }
     
-    @IBAction func doMergeVideo(_ sender: Any) {
-        
-        
-//        mergeTwoVideosToOneVideo()
+    fileprivate func splitVideoByStartAndEndTime() {
+        //        mergeTwoVideosToOneVideo()
         
         
         let videoURL = Bundle.main.url(forResource: "movie1", withExtension: "mov")!
@@ -50,7 +49,6 @@ class VideoController: UIViewController {
         let length =  CMTime(seconds: sourceAsset.duration.seconds, preferredTimescale: sourceAsset.duration.timescale)
         
         
-      
         
         let path = NSTemporaryDirectory().appending("sliptVideo.mov")
         let outputURL = URL.init(fileURLWithPath: path)
@@ -94,10 +92,41 @@ class VideoController: UIViewController {
                     
                 default:
                     print("finished")
-            
+                    
                 }
             })
+            
+        }
+    }
+    
+    @IBAction func doMergeVideo(_ sender: Any) {
         
+        
+//        splitVideoByStartAndEndTime()
+        
+        
+        let urlVideo = Bundle.main.url(forResource: "movie1", withExtension: "mov")
+        
+        
+        let videoData = VideoData()
+        videoData.isVideo = true
+        videoData.asset = AVAsset(url: urlVideo!)
+        
+        let imageData = VideoData()
+        imageData.isVideo = false
+        imageData.image = UIImage(named: "n1")
+        
+        let textData = TextData()
+        textData.text = "HELLO WORLD"
+        textData.fontSize = 50
+        textData.textColor = UIColor.green
+        textData.showTime = 3 // Second
+        textData.endTime = 5 // Second
+        textData.textFrame = CGRect(x: 0, y: 0, width: 400, height: 300)
+        
+        videoManager.makeVideoFrom(data: [videoData, imageData], textData: [textData]) { (outputUrl, error) in
+            
+            debugPrint("make video from image , video and text ", outputUrl)
         }
     }
     

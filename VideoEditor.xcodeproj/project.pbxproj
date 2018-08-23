@@ -17,6 +17,7 @@
 		71137C95212ABE4E005F8A6A /* VideoCropperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71137C94212ABE4D005F8A6A /* VideoCropperViewController.swift */; };
 		71137C97212ABE7D005F8A6A /* AssetSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71137C96212ABE7C005F8A6A /* AssetSelectionViewController.swift */; };
 		71137C9A212AC207005F8A6A /* VideoTrimmerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71137C99212AC207005F8A6A /* VideoTrimmerViewController.swift */; };
+		713914B2212EA7E900B0B8B1 /* black.mov in Resources */ = {isa = PBXBuildFile; fileRef = 713914B1212EA7E900B0B8B1 /* black.mov */; };
 		718A9DB4212BAEFF001C0799 /* creativeminds.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 718A9DB3212BAEFE001C0799 /* creativeminds.mp3 */; };
 		718A9DB6212BAF2F001C0799 /* AudioKitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718A9DB5212BAF2F001C0799 /* AudioKitViewController.swift */; };
 		718A9DB8212BCC20001C0799 /* FDWaveformViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718A9DB7212BCC20001C0799 /* FDWaveformViewController.swift */; };
@@ -46,6 +47,7 @@
 		71137C96212ABE7C005F8A6A /* AssetSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssetSelectionViewController.swift; sourceTree = "<group>"; };
 		71137C99212AC207005F8A6A /* VideoTrimmerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoTrimmerViewController.swift; sourceTree = "<group>"; };
 		712AABA4C70ACF3F70A3DFAD /* Pods_VideoEditor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VideoEditor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		713914B1212EA7E900B0B8B1 /* black.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = black.mov; sourceTree = "<group>"; };
 		718A9DB3212BAEFE001C0799 /* creativeminds.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = creativeminds.mp3; sourceTree = "<group>"; };
 		718A9DB5212BAF2F001C0799 /* AudioKitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioKitViewController.swift; sourceTree = "<group>"; };
 		718A9DB7212BCC20001C0799 /* FDWaveformViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FDWaveformViewController.swift; sourceTree = "<group>"; };
@@ -91,6 +93,7 @@
 		71137C86212A570D005F8A6A /* Asset */ = {
 			isa = PBXGroup;
 			children = (
+				713914B1212EA7E900B0B8B1 /* black.mov */,
 				718A9DB3212BAEFE001C0799 /* creativeminds.mp3 */,
 				71137C8E212A8E0F005F8A6A /* silence.mp3 */,
 				71137C87212A5744005F8A6A /* movie1.mov */,
@@ -240,6 +243,7 @@
 			files = (
 				71953A11212D038E00CE4360 /* Info.plist in Resources */,
 				71137C8F212A8E0F005F8A6A /* silence.mp3 in Resources */,
+				713914B2212EA7E900B0B8B1 /* black.mov in Resources */,
 				71E3F301212669A10088EC6E /* LaunchScreen.storyboard in Resources */,
 				71137C8A212A5744005F8A6A /* movie2.mov in Resources */,
 				718A9DB4212BAEFF001C0799 /* creativeminds.mp3 in Resources */,

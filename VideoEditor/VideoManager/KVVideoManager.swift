@@ -302,6 +302,7 @@ class KVVideoManager: NSObject {
         
         // Determine video output
         for videoData in data {
+            
             guard let videoAsset = videoData.asset else { continue }
 
             // Get video track
